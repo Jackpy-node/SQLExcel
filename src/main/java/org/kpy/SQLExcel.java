@@ -50,8 +50,22 @@ public class SQLExcel {
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
+            while(resultSet.next()){
+                //resultSet.getInt()
+            }
+
             ResultSetMetaData data = resultSet.getMetaData();
-            data.getColumnCount();
+            int count = data.getColumnCount();
+
+            String table_name = data.getTableName(1);
+            System.out.println("[table_name] " + table_name);
+
+            for(int i=0;i<count;i++) {
+                String name = data.getColumnName(i+1);
+                System.out.println("[ColumnName] " + name);
+            }
+
+
             System.out.println("[SQL] " + data.getColumnCount());
         }
 
